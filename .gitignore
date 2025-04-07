@@ -1,0 +1,52 @@
+# ===================
+# Python
+# ===================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.log
+*.sqlite3
+*.env
+.venv/
+venv/
+
+# Pliki robocze i wygenerowane
+input.txt
+output.json
+fixed_output.json
+commands.json
+simulation_output.json
+
+# ===================
+# Node.js
+# ===================
+node_modules/
+package-lock.json
+
+# ===================
+# Buildy C
+# ===================
+
+
+# ===================
+# Uploads
+# ===================
+backend/uploads/
+
+# ===================
+# VSCode
+# ===================
+.vscode/
+
+# ===================
+# Systemowe
+# ===================
+.DS_Store
+Thumbs.db
+
+# ===================
+# Railway & inne
+# ===================
+.env
