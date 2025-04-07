@@ -9,7 +9,7 @@ const app = express();
 const upload = multer({ dest: "uploads/" });
 
 app.use(cors());
-app.use(express.static(path.join(__dirname, "../frontend")));
+app.use(express.static(path.join(__dirname)));
 
 function runCommand(command, args) {
   const result = spawnSync(command, args, { encoding: "utf-8" });
@@ -39,7 +39,11 @@ app.post("/simulate", upload.single("commands"), (req, res) => {
   }
 });
 
-const PORT = 3000;
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🚀 Serwer działa na http://localhost:${PORT}`);
 });
