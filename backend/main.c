@@ -198,30 +198,6 @@ void move_cars(Road roads[], FILE* output) {
         }
     }
 
-    // for (int v = 0; v < vehicle_count; v++) {
-    //     if (!vehicles[v].active) continue;
-
-    //     int from_road = (int)vehicles[v].from_lane;
-
-    //     for (int i = 0; i < MAX_LANES; i++) {
-    //         Lane lane = roads[from_road].inbound[i];
-
-    //         if (roads[from_road].inbound[i].lane_id == vehicles[v].from_lane &&
-    //             roads[from_road].inbound[i].light_color == 'G' &&
-    //             roads[from_road].inbound[i].queue_size) {
-
-    //             if(!can_proceed(vehicles[v], roads)) break; // jeśli z naprzeciwka coś jedzie to ten pojazd czeka
-    //             roads[from_road].inbound[i].queue_size--;
-    //             vehicles[v].active = 0;
-
-    //             if (!first) fprintf(output, ",\n");
-    //             fprintf(output, "         \"%s\"", vehicles[v].id);
-    //             first = 0;
-    //             break;
-    //         }
-    //     }
-    // }
-
     fprintf(output, "\n      ]\n    },\n");
 }
 

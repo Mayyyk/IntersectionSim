@@ -2,18 +2,18 @@
   "stepStatuses": [
     {
       "leftVehicles": [
+         "straight",
+         "left"
+      ]
+    },
+    {
+      "leftVehicles": [
 
       ]
     },
     {
       "leftVehicles": [
-         "vehicle2"
-      ]
-    },
-    {
-      "leftVehicles": [
-         "vehicle1",
-         "vehicle3"
+
       ]
     }
   ]

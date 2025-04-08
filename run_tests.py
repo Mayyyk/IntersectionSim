@@ -51,10 +51,10 @@ def main():
             all_passed = all_passed and passed
 
     if all_passed:
-        print("\n✅✅✅ ALL TESTS PASSED ✅✅✅")
+        print("\ALL TESTS PASSED")
         sys.exit(0)
     else:
-        print("\n❌❌ Some tests failed ❌❌")
+        print("\nSome tests failed")
         sys.exit(1)
 
 if __name__ == "__main__":

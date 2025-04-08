@@ -2,9 +2,6 @@
   "stepStatuses": [
     {
       "leftVehicles": ["v1"]
-    },
-    {
-      "leftVehicles": []
     }
   ]
 }

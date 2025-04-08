@@ -28,7 +28,10 @@ package-lock.json
 # ===================
 # Buildy C
 # ===================
-
+main
+main.exe
+main2.exe
+main3.exe
 
 # ===================
 # Uploads
