@@ -15,15 +15,13 @@
 ## Testowanie
 
 - Logika systemu jest zaimplementowana w C.
-- Testujemy zachowanie systemu w Pythonie, bo:
-  - łatwo porównać JSONy,
-  - szybciej się wykonuje,
-  - nie trzeba kompilować,
-  - proste do integracji z CI/CD.
+- Testujemy zachowanie systemu w Pythonie
 
 ### Uruchamianie testów:
 
 - **Jednorazowe uruchomienie symulacji:**
+
+    Przykładowy plik commands.json znajduje się w folderze /backend
 
   ```bash
   cd backend
@@ -39,14 +37,13 @@
 
 - **Testy automatyczne:**
 
+(obecnie nie są dokończone)
+
   ```bash
   cd IntersectionSim
   python run_tests.py
   ```
 
-## Znane problemy / ograniczenia
-
-- Trudność z testowaniem konkretnych linii: brak predefiniowanych warunków.
 
 ## Realistyczne usprawnienia do rozważenia
 
