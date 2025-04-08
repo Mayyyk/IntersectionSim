@@ -1,5 +1,3 @@
-Logika przemieszczania się samochodów
-
 Tryby:
 - bezpieczny, gdy zła pogoda
 - standard, na podstawie ilości pojazdów
@@ -7,21 +5,7 @@ Tryby:
 - awaryjny i wszystko miga na żółto
 - priorytet dla KMK
 
-Drukowanie pożądanego outputu
 
-Na Arduino świecić diodami
-
-GUI i deploy na railway
-
-Zrobić cały bonus pack i fajnie opakować 
-
-Wydajność systemu
-
-Organizacja, czytelność i zrozumiałość kodu
-
-Pokrycie testami
-
----- testy
 [ ] basic - przejazd legalny przy zielonym świetle
 [ ] mandates - mandat
 [ ] conflict - dwa pojazdy jednocześnie
@@ -29,13 +13,11 @@ Pokrycie testami
 [ ] batch - kolejka 3 aut
 [ ] multi_road - wszystkie drogi na raz
 
-
-
-
+w /backend
 python run_simulation.py commands.json output.json - normalne użycie
 
-python run_simulation.py tests/test_illegal/commands.json tests/test_illegal/result.json --deterministic - testy ręcznie
+w /IntersectionSim
+python run_simulation.py tests/.../commands.json tests/.../result.json --deterministic - testy ręcznie
 
 python run_tests.py - testy automatycznie
 
-gui działa, gdy najpierw normalne użycie, (albo po prostu kompilacja wcześniej)
