@@ -11,7 +11,7 @@ input_json = sys.argv[1]
 output_json = sys.argv[2]
 deterministic = "--deterministic" in sys.argv
 
-python_cmd = "python3" if platform.system() != "Windows" else "python"
+python_cmd = "python" if platform.system() != "Windows" else "python3"
 
 # 1. Wygeneruj input.txt
 json_input_cmd = [python_cmd, "json_to_input.py", input_json]
