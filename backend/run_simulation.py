@@ -3,6 +3,13 @@ import subprocess
 import os
 import platform
 
+print("=== DEBUG START ===")
+print("CWD:", os.getcwd())
+print("FILES:", os.listdir("."))
+print("ARGS:", sys.argv)
+print("=== DEBUG END ===")
+
+
 if len(sys.argv) < 3:
     print("Użycie: python run_simulation.py commands.json output.json [--deterministic]")
     sys.exit(1)
@@ -11,7 +18,7 @@ input_json = sys.argv[1]
 output_json = sys.argv[2]
 deterministic = "--deterministic" in sys.argv
 
-python_cmd = "python" if platform.system() != "Windows" else "python3"
+python_cmd = "python3" if platform.system() != "Windows" else "python"
 
 # 1. Wygeneruj input.txt
 json_input_cmd = [python_cmd, "json_to_input.py", input_json]

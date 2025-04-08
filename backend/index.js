@@ -14,35 +14,54 @@ app.use(cors());
 app.use(express.static(path.join(__dirname)));
 
 function runCommand(command, args) {
-  const result = spawnSync(command, args, { encoding: "utf-8" });
+  const result = spawnSync(command, args, {
+    encoding: "utf-8",
+    shell: true // ważne przy Windows
+  });
 
   console.log(`\n> ${command} ${args.join(" ")}`);
-  if (result.stdout) console.log("STDOUT:", result.stdout);
-  if (result.stderr) console.error("STDERR:", result.stderr);
+
+  if (result.stdout) {
+    console.log("=== STDOUT ===");
+    console.log(result.stdout);
+  }
+
+  if (result.stderr) {
+    console.log("=== STDERR ===");
+    console.error(result.stderr);
+  }
 
   if (result.status !== 0) {
     throw new Error(`Command failed: ${command} ${args.join(" ")}`);
   }
+  console.log("Exit code:", result.status);
+
 }
+
+
 
 
 app.post("/simulate", upload.single("commands"), (req, res) => {
   try {
-    const originalPath = req.file.path;
+    const tempPath = req.file.path;
     const commandsPath = path.join(__dirname, "commands.json");
 
-    fs.renameSync(originalPath, commandsPath);
+    // Najpierw kopiuj plik, dopiero potem usuń tymczasowy
+    fs.copyFileSync(tempPath, commandsPath);
+    fs.unlinkSync(tempPath); // usuń plik z uploads
 
-    // 🔁 Odpal pipeline z logami
-    runCommand("python3", ["run_simulation.py", "commands.json", "fixed_output.json"]);
+    // 🔁 Odpal pipeline
+    runCommand("python", ["run_simulation.py", "commands.json", "fixed_output.json"]);
 
     res.download("fixed_output.json", "result.json");
+
   } catch (err) {
     console.error("❌ Błąd w pipeline:", err.message);
-    console.error(err.stack); // <-- dodaj to
+    console.error(err.stack);
     res.status(500).send("Błąd podczas przetwarzania symulacji.");
   }
 });
+
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
