@@ -34,11 +34,12 @@ app.post("/simulate", upload.single("commands"), (req, res) => {
     fs.renameSync(originalPath, commandsPath);
 
     // 🔁 Odpal pipeline z logami
-    runCommand("python", ["run_simulation.py", "commands.json", "fixed_output.json"]);
+    runCommand("python3", ["run_simulation.py", "commands.json", "fixed_output.json"]);
 
     res.download("fixed_output.json", "result.json");
   } catch (err) {
     console.error("❌ Błąd w pipeline:", err.message);
+    console.error(err.stack); // <-- dodaj to
     res.status(500).send("Błąd podczas przetwarzania symulacji.");
   }
 });
