@@ -5,6 +5,8 @@ const fs = require("fs");
 const path = require("path");
 const { spawnSync } = require("child_process");
 
+
+
 const app = express();
 const upload = multer({ dest: "uploads/" });
 
@@ -14,13 +16,15 @@ app.use(express.static(path.join(__dirname)));
 function runCommand(command, args) {
   const result = spawnSync(command, args, { encoding: "utf-8" });
 
-  if (result.stdout) console.log(result.stdout);
-  if (result.stderr) console.error(result.stderr);
+  console.log(`\n> ${command} ${args.join(" ")}`);
+  if (result.stdout) console.log("STDOUT:", result.stdout);
+  if (result.stderr) console.error("STDERR:", result.stderr);
 
   if (result.status !== 0) {
     throw new Error(`Command failed: ${command} ${args.join(" ")}`);
   }
 }
+
 
 app.post("/simulate", upload.single("commands"), (req, res) => {
   try {

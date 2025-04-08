@@ -22,6 +22,10 @@ subprocess.run(json_input_cmd, check=True)
 executable = "main.exe" if platform.system() == "Windows" else "./main"
 subprocess.run([executable], check=True)
 
+print(f"Platforma: {platform.system()}")
+print(f"Używam: {executable}")
+print(f"Plik main istnieje? {os.path.exists(executable)}")
+
 # 3. Napraw output.json → fixed_output.json
 subprocess.run(["python", "fix_output.py"], check=True)
 
